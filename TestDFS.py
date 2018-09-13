@@ -38,13 +38,13 @@ def findPath(queue ):
     while True:
         dict = {}
         dict[numToChar[str(count)]] = queue.dequeue()
-        print(graph)
+
         if dict[numToChar[str(count)]][1] == {"Go","Gr","As","Fo"} :
             print(dict)
             queue.add(dict)
             break
 
-        #else:
+        else:
 
 
 
