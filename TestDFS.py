@@ -21,7 +21,7 @@ class Queue:
 
     def show(self):
         i = 1
-        item = []
+        item =
         for item in self.items[str(i)] :
             #print(item)
             print(type(item))
@@ -39,6 +39,24 @@ q.enqueue(True)
 print(q.isEmpty())
 '''
 
+s=[set({"Go","Gr","As","Fo"}),set({})]
+a=[set({"Go","Gr"}),set({"As","Fo"})]
+b=[set({"Go","Gr","Fo"}),set({"As"})]
+c=[set({"Go","Fo"}),set({"As","Gr"})]
+d=[set({"Gr","Fo"}),set({"As","Go"})]
+e=[set({"As","Gr","Fo"}),set({"Go"})]
+f=[set({"Gr"}),set({"As","Go","Fo"})]
+g=[set({"Fo"}),set({"As","Go","Gr"})]
+h=[set({"As","Go","Fo"}),set({"Gr"})]
+i=[set({"Go"}),set({"As","Fo","Gr"})]
+j=[set({"As","Go","Gr"}),set({"Fo"})]
+k=[set({"As","Go"}),set({"Gr","Fo"})]
+l=[set({"As","Fo"}),set({"Go","Gr"})]
+m=[set(){"As"}),set({"Go","Gr","Fo"})]
+n=[set({"As","Gr"}),set({"Go","Fo"})]
+goal = [set({}),set({"As","Go","Gr","Fo"})]
+
+
 Go = "Go"
 Gr = 'Gr'
 As = "As"
@@ -47,55 +65,46 @@ Fo = 'Fo'
 queue = Queue()
 count = 1
 n = {}  # dict
-s = [{Go,Gr,As,Fo},{}]  #list  {} = set
 n[str(count)] = s
 queue.enqueue(n[str(count)],count)
 queue.show()
 count = count+1
 
-a = [{Go,Gr},{As,Fo}]
 n[str(count)] = a
 queue.enqueue(n[str(count)],count)
 queue.show()
 count = count+1
 
-b = [{Go,Gr,Fo},{As}]
 n[str(count)] = b
 queue.enqueue(n[str(count)],count)
 queue.show()
 count = count+1
 
-c = [{Go,Fo},{As,Gr}]
 n[str(count)] = c
 queue.enqueue(n[str(count)],count)
 queue.show()
 count = count+1
 
-d = [{Gr,Fo},{As,Go}]
 n[str(count)] = d
 queue.enqueue(n[str(count)],count)
 queue.show()
 count = count+1
 
-e = [{As,Gr,Fo},{Go}]
 n[str(count)] = e
 queue.enqueue(n[str(count)],count)
 queue.show()
 count = count+1
 
-f = [{Gr},{As,Go,Fo}]
 n[str(count)] = f
 queue.enqueue(n[str(count)],count)
 queue.show()
 count = count+1
 
-g = [{Go,Gr,Fo},{As}]
 n[str(count)] = g
 queue.enqueue(n[str(count)],count)
 queue.show()
 count = count+1
 
-b = [{Go,Gr,Fo},{As}]
 n[str(count)] = b
 queue.enqueue(n[str(count)],count)
 queue.show()
