@@ -35,28 +35,30 @@ q.enqueue(True)
 print(q.isEmpty())
 '''
 
-s = [set({"Go","Gr","As","Fo"}), set({})]
-a = [set({"Go","Gr"}), set({"As","Fo"})]
-b = [set({"Go","Gr","Fo"}), set({"As"})]
-c = [set({"Go","Fo"}), set({"As","Gr"})]
-d = [set({"Gr","Fo"}), set({"As","Go"})]
-e = [set({"As","Gr","Fo"}), set({"Go"})]
-f = [set({"Gr"}), set({"As","Go","Fo"})]
-g = [set({"Fo"}), set({"As","Go","Gr"})]
-h = [set({"As","Go","Fo"}), set({"Gr"})]
-i = [set({"Go"}), set({"As","Fo","Gr"})]
-j = [set({"As","Go","Gr"}), set({"Fo"})]
-k = [set({"As","Go"}), set({"Gr","Fo"})]
-l = [set({"As","Fo"}), set({"Go","Gr"})]
-m = [set({"As"}), set({"Go","Gr","Fo"})]
-n = [set({"As","Gr"}), set({"Go","Fo"})]
-goal = [set({}), set({"As","Go","Gr","Fo"})]
-
 
 Go = "Go"
 Gr = 'Gr'
 As = "As"
 Fo = 'Fo'
+
+# list node
+s = [set({Go,Gr,As,Fo}), set({})]
+'''a = [set({Go,Gr}), set({As,Fo})]
+b = [set({Go,Gr,Fo}), set({As})]
+c = [set({Go,Fo}), set({As,Gr})]
+d = [set({Gr,Fo}), set({As,Go})]
+e = [set({As,Gr,Fo}), set({Go})]
+f = [set({Gr}), set({As,Go,Fo})]
+g = [set({Fo}), set({As,Go,Gr})]
+h = [set({As,Go,Fo}), set({Gr})]
+i = [set({Go}), set({As,Fo,Gr})]
+j = [set({As,Go,Gr}), set({Fo})]
+k = [set({As,Go}), set({Gr,Fo})]
+l = [set({As,Fo}), set({Go,Gr})]
+m = [set({As}), set({Go,Gr,Fo})]
+n = [set({As,Gr}), set({Go,Fo})]'''
+goal = [set({}), set({As,Go,Gr,Fo})]
+
 
 queue = Queue()
 count = 1
