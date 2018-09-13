@@ -1,13 +1,13 @@
 class Queue:
     def __init__(self):
-        self.items = {}
+        self.items = []
 
     def isEmpty(self):
-        return self.items == {}
+        return self.items == []
 
-    def enqueue(self, item ,num):
-        self.items[str(num)] = item
-        print(item)
+    def enqueue(self, item ):
+        self.items.insert(0,item)
+        #print(item)
         #self.show()
 
     def add(self, item):
@@ -22,6 +22,17 @@ class Queue:
     def show(self):
         print(self.items)
 
+
+def findPath(queue ):
+    count = 1
+    dict = {}
+    strCount = str(count)
+    dict[strCount] = queue.dequeue()
+
+    if dict[strCount][0] == {"Gr","Go","As","Fo"}:
+        a = [set({Go,Gr}), set({As,Fo})]
+        b = [set({Go,Gr,Fo}), set]
+    #print(queue.)
 
 '''q=Queue()
 q.enqueue(4)
@@ -59,8 +70,15 @@ m = [set({As}), set({Go,Gr,Fo})]
 n = [set({As,Gr}), set({Go,Fo})]'''
 goal = [set({}), set({As,Go,Gr,Fo})]
 
-
 queue = Queue()
+print(s)
+print(goal)
+
+queue.enqueue(s)
+queue.enqueue(goal)
+queue.show()
+findPath(queue)
+'''queue = Queue()
 count = 1
 n = {}  # dict
 n[str(count)] = s
@@ -106,4 +124,4 @@ count = count+1
 n[str(count)] = b
 queue.enqueue(n[str(count)],count)
 queue.show()
-count = count+1
+count = count+1'''
