@@ -23,28 +23,30 @@ class Queue:
         print(self.items)
 
 
-def findPath(queue ,graph):
-    '''count = 1
-    dict = {}
-    strCount = str(count)
-    dict[strCount] = queue.dequeue()
+def findPath(graph, start, end, path=[]):
 
-    if dict[strCount][0] == {"Gr","Go","As","Fo"}:
-        a = [set({Go,Gr}), set({As,Fo})]
-        b = [set({Go,Gr,Fo}), set({As})]
-        print(s)'''
+    path = path + [start]
+    if start == end:
+        return [path]
 
-    count = 1
-    while True:
-        dict = {}
-        dict[numToChar[str(count)]] = queue.dequeue()
-        print(dict)
-        if dict[numToChar[str(count)]][1] == {"Go","Gr","As","Fo"} :
-            print(dict)
-            queue.add(dict)
-            break
+    paths = []
+    for node in graph[start]:
+        if node not in path:
+            newpaths = find_all_paths(graph, node, end, path)
+            for newpath in newpaths:
+                paths.append(newpath)
+    return paths
 
 
+def dfs_paths(graph, start, goal):
+    stack = [(start, [start])]
+    while stack:
+        (vertex, path) = stack.pop()
+        for next in graph[vertex] - set(path):
+            if next == goal:
+                yield path + [next]
+            else:
+                stack.append((next, path + [next]))
 
 
 
@@ -79,16 +81,16 @@ numToChar = {   "1" : "a",
                 "14" : "n"
             }
 
-graph = {   's' : ['a','d','c','b'],
-            'd' : ['e'],
-            'e' : ['f','g'],
-            'f' : ['j'],
-            'g' : ['h'],
-            'j' : ['i'],
-            'h' : ['i'],
-            'i' : ['k'],
-            'k' : ['goal'],
-            'goal' : ['m','n']
+graph = {   's' : set(['a','d','c','b']),
+            'd' : set(['e']),
+            'e' : set(['f','g']),
+            'f' : set(['j']),
+            'g' : set(['h']),
+            'j' : set(['i']),
+            'h' : set(['i']),
+            'i' : set(['k']),
+            'k' : set(['goal']),
+            'goal' : set(['m','n'])
         }
 
 Go = "Go"
@@ -119,10 +121,12 @@ goal = [set({}), set({As,Go,Gr,Fo})]
 
 queue = Queue()
 
+list(dfs_paths(graph,s,goal))
 queue.enqueue(graph)
-queue.show()
-findPath(queue, graph)
-queue.show()
+#queue.show()
+#findPath(graph ,s,goal)
+#queue.show()
+
 '''queue = Queue()
 count = 1
 n = {}  # dict
