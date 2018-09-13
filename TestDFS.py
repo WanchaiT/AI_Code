@@ -24,14 +24,31 @@ class Queue:
 
 
 def findPath(queue ):
-    count = 1
+    '''count = 1
     dict = {}
     strCount = str(count)
     dict[strCount] = queue.dequeue()
 
     if dict[strCount][0] == {"Gr","Go","As","Fo"}:
         a = [set({Go,Gr}), set({As,Fo})]
-        b = [set({Go,Gr,Fo}), set]
+        b = [set({Go,Gr,Fo}), set({As})]
+        print(s)'''
+
+    count = 1
+    while True:
+        dict = {}
+        dict[numToChar[str(count)]] = queue.dequeue()
+        print(graph)
+        if dict[numToChar[str(count)]][1] == {"Go","Gr","As","Fo"} :
+            print(dict)
+            queue.add(dict)
+            break
+
+        #else:
+
+
+
+
     #print(queue.)
 
 '''q=Queue()
@@ -45,7 +62,33 @@ q.show()
 q.enqueue(True)
 print(q.isEmpty())
 '''
+numToChar = {   "1" : "a",
+                "2" : "b",
+                "3" : "c",
+                "4" : "d",
+                "5" : "e",
+                "6" : "f",
+                "7" : "g",
+                "8" : "h",
+                "9" : "i",
+                "10" : "j",
+                "11" : "k",
+                "12" : "l",
+                "13" : "m",
+                "14" : "n"
+            }
 
+graph = {   's' : ['a','d','c','b'],
+            'd' : ['e'],
+            'e' : ['f','g'],
+            'f' : ['j'],
+            'g' : ['h'],
+            'j' : ['i'],
+            'h' : ['i'],
+            'i' : ['k'],
+            'k' : ['goal'],
+            'goal' : ['m','n']
+        }
 
 Go = "Go"
 Gr = 'Gr'
@@ -54,30 +97,15 @@ Fo = 'Fo'
 
 # list node
 s = [set({Go,Gr,As,Fo}), set({})]
-'''a = [set({Go,Gr}), set({As,Fo})]
-b = [set({Go,Gr,Fo}), set({As})]
-c = [set({Go,Fo}), set({As,Gr})]
-d = [set({Gr,Fo}), set({As,Go})]
-e = [set({As,Gr,Fo}), set({Go})]
-f = [set({Gr}), set({As,Go,Fo})]
-g = [set({Fo}), set({As,Go,Gr})]
-h = [set({As,Go,Fo}), set({Gr})]
-i = [set({Go}), set({As,Fo,Gr})]
-j = [set({As,Go,Gr}), set({Fo})]
-k = [set({As,Go}), set({Gr,Fo})]
-l = [set({As,Fo}), set({Go,Gr})]
-m = [set({As}), set({Go,Gr,Fo})]
-n = [set({As,Gr}), set({Go,Fo})]'''
+
 goal = [set({}), set({As,Go,Gr,Fo})]
 
 queue = Queue()
-print(s)
-print(goal)
 
 queue.enqueue(s)
-queue.enqueue(goal)
-queue.show()
+
 findPath(queue)
+queue.show()
 '''queue = Queue()
 count = 1
 n = {}  # dict
