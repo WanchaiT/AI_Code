@@ -7,8 +7,6 @@ class Queue:
 
     def enqueue(self, item ):
         self.items.insert(0,item)
-        #print(item)
-        #self.show()
 
     def add(self, item):
         self.items.append(item)
@@ -22,48 +20,40 @@ class Queue:
     def show(self):
         print(self.items)
 
+def find_next_state(set ,state) :
+    #code
 
-def findPath(queue,start,end) :
-    if start == end:
-        return path
-    for node in graph[start]:
-        if node not in path:
-            newpath = find_path(queue,node, end, path)
-            if newpath: return newpath
-    return None
+def is_goal(state):
+    return state[0] = {}
 
+def find_path(queue, set) :
+    if queue.isEmpty() :
+        return False
+    else :
+        current_path = queue.dequeue() #current_path  = last queue
 
-s = [set({"Go","Gr","As","Fo"}), set({})]
-a = [set({"Go","Gr"}), set({"As","Fo"})]
-b = [set({"Go","Gr","Fo"}), set({"As"})]
-c = [set({"Go","Fo"}), set({"As","Gr"})]
-d = [set({"Gr","Fo"}), set({"As","Go"})]
-e = [set({"As","Gr","Fo"}), set({"Go"})]
-f = [set({"Gr"}), set({"As","Go","Fo"})]
-g = [set({"Fo"}), set({"As","Go","Gr"})]
-h = [set({"As","Go","Fo"}), set({"Gr"})]
-i = [set({"Go"}), set({"As","Fo","Gr"})]
-j = [set({"As","Go","Gr"}), set({"Fo"})]
-k = [set({"As","Go"}), set({"Gr","Fo"})]
-l = [set({"As","Fo"}), set({"Go","Gr"})]
-m = [set({"As"}), set({"Go","Gr","Fo"})]
-n = [set({"As","Gr"}), set({"Go","Fo"})]
-goal = [set({}), set({"As","Go","Gr","Fo"})]
+    if is_goal(current_path) :
+        return current_path #return path of goal
+    else :
+        current_state = current_path[-1]
+        list_next_state = find_next_state(set ,current_state)
 
-graph = {   's' : ['a','d','c','b'],
-            'd' : ['e'],
-            'e' : ['f','g'],
-            'f' : ['j'],
-            'g' : ['h'],
-            'j' : ['i'],
-            'h' : ['i'],
-            'i' : ['k'],
-            'k' : ['goal'],
-            'goal' : ['m','n']
-        }
+        #ex list_next_state = [[{"a"},{"b"}] , [{"c"},{"d"}]]
+        #ex state = next_state[0] = [{"a"},{"b"}]  --> state = [next_state[0]]
+        #set = [[{"a"},{"b"}] , [{"c"},{"d"}]]
 
-queue = Queue()
-queue.enqueue(s)
-queue.show()
+        for state in list_next_state :
+            set += [state]
+            current_path += [state]
+            queue.add(current_path)
 
-path = findPath()
+        return find_path(queue, set)
+
+queue = Queue
+first_state = [set({"As","Fo","Go","Gr"}) ,set()]
+
+#implement a set of type list, and inside list have states
+#and inside states have sets
+set = [first_state]
+queue.add(set)
+path = find_path(queue, set)

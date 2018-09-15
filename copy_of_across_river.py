@@ -16,7 +16,7 @@ class Queue:
 
     def enqueue(self, item):
         self.items.insert(0,item)
-    
+
     def add(self, item):
         self.items.append(item)
 
@@ -25,7 +25,7 @@ class Queue:
 
     def size(self):
         return len(self.items)
-    
+
     def show(self):
         print(self.items)
 
@@ -67,12 +67,12 @@ def findNextState(sPre,set_s):
 def isGoal(state):
   return len(state[0]) == 0
 
-def findGoal(Q,set_s,z):
+def findGoal(Q,set_s):
     if Q.isEmpty():         #2
         return False
     else:
         N = Q.dequeue()
-        if isGoal(N[-1]):   #3
+        if isGoal(N[-1]):   #3 N[-1] = last list
             return N
         else:               #4
             listState = findNextState(N[-1],set_s)
@@ -80,16 +80,15 @@ def findGoal(Q,set_s,z):
                 part = N + [i]
                 Q.add(part)
                 set_s = set_s + [i]
-            return findGoal(Q,set_s,z+1)
+            return findGoal(Q,set_s)
 
 stateS = [{"Go","Gr","As","Fo",},{}]
 set_s = [stateS]
 Q = Queue()
 Q.add([stateS])
-partial = findGoal(Q,set_s,0)
+partial = findGoal(Q,set_s)
 if not partial:
     print("No way")
 else:
     for i in range(len(partial)):
       print("State "+str(i)+" : "+" "+str(partial[i][0])+" แม่น้ำ "+str(partial[i][1])+"\n")
-
