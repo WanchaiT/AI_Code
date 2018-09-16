@@ -75,6 +75,7 @@ def findGoal(Q,set_s):
         if isGoal(N[-1]):   #3 N[-1] = last list
             return N
         else:               #4
+            print(N[-1][1])
             listState = findNextState(N[-1],set_s)
             for i in listState:
                 part = N + [i]
