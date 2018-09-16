@@ -28,14 +28,29 @@ def find_next_state(set ,state) :
     #set_side is dictionry
     set_side = {"north" : north_side ,"south" : south_side}
 
-    if "AS" in set_side["north"] :  #"AS" in north_side
-        set_side["north"].remove("AS") # move "AS" to south_side
-        set_side["south"].add("AS")
-        childs_of_north = list(set_side["north"])
-    else :                          #"AS" in south_side                  
-        set_side["south"].remove("AS") # move "AS" to north_side
-        set_side["north"].add("AS")
-        childs_of_north = list(set_side["south"])
+    if "AS" in set_side["north"] :  #"AS" on north_side
+        childs_of_north = childs_in_side("north" ,"south" ,set_side)
+
+        #check can pass by this state and list["north","south"] not in set
+        if check_state(set_side) and
+            not(list(set_side["north"] ,set_side["south"]) in set) :
+            list_state = list(set_side["north"] ,set_side["south"])
+
+    else :                          #"AS" on south_side
+        childs_of_south = childs_in_side("south" ,"north" ,set_side)
+
+        #check can pass by this state and list["north","south"] not in set
+        if check_state(set_side) and
+            not(list[set_side["north"] ,set_side["south"]] in set) :
+            list_state = list(set_side["north"] ,set_side["south"])
+
+def childs_in_side(side_add ,side_remove ,set_side) :
+    set_side[side_add].add("AS")
+    set_side[side_remove].remove("AS")
+    childs_of_side = list(set_side[side_add])
+
+def check_state(state) :
+
 
 def is_goal(state):
     return state[0] == {}
@@ -74,4 +89,4 @@ queue.add(set)
 
 #path = [[{"a","b"},{"b"}{"c"}] , [{"a"},{"b","c","d"}] , ...]
 #--> list[list[set{},set{}] , list[set{},set{}] , ... ]
-path = find_path(queue, set)
+path = find_path(queue ,set)
