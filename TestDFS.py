@@ -47,7 +47,7 @@ def find_next_state(set ,state) :
 def childs_in_side(side_add ,side_remove ,set_side) :
     set_side[side_add].add("AS")
     set_side[side_remove].remove("AS")
-    childs_of_side = list(set_side[side_add])
+    return childs_of_side = list(set_side[side_add])
 
 def check_state(state) :
 
