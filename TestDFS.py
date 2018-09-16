@@ -34,7 +34,7 @@ def find_next_state(set ,state) :
 
         #check can pass by this state and list["north","south"] not in set
         if check_state(set_side) and
-            not(list(set_side["north"] ,set_side["south"]) in set) :
+            not([set_side["north"] ,set_side["south"]] in set) :
             list_state = list(set_side["north"] ,set_side["south"])
 
         for state in list_state :
@@ -44,7 +44,7 @@ def find_next_state(set ,state) :
 
         #check can pass by this state and list["north","south"] not in set
         if check_state(set_side) and
-            not(list[set_side["north"] ,set_side["south"]] in set) :
+            not([set_side["north"] ,set_side["south"]] in set) :
             list_state = list(set_side["north"] ,set_side["south"])
 
         for state in list_state :
