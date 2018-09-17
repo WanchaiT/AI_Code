@@ -35,7 +35,7 @@ def find_next_state(set ,state) :
         #check can pass by this state and list["north","south"] not in set
         if check_state(set_side) and
             not([set_side["north"] ,set_side["south"]] in set) :
-            list_state = list(set_side["north"] ,set_side["south"])
+            list_state = [set_side["north"] ,set_side["south"]]
 
         for state in list_state :
 
@@ -45,26 +45,30 @@ def find_next_state(set ,state) :
         #check can pass by this state and list["north","south"] not in set
         if check_state(set_side) and
             not([set_side["north"] ,set_side["south"]] in set) :
-            list_state = list(set_side["north"] ,set_side["south"])
+            list_state = [set_side["north"] ,set_side["south"]]
 
         for state in list_state :
 
 def childs_in_side(side_insert ,side_remove ,set_side) :
     set_side[side_insert].insert({"AS"})
     set_side[side_remove].remove({"AS"})
-    return childs_of_side = list(set_side[side_add])    #list[set{}]
+    return childs_of_side = list(set_side[side_insert])    #list[set{}]
 
 def check_state(state) :
     go_and_fo = {"Go" ,"Fo"}
     gr_and_go = {"Gr" ,"Go"}
     only_as = {"As"}
 
-    north_side = state["north"] #list[set{}]
-    south_side = state["south"]
+    north_side = set(state["north"][0]) #set{}
+    south_side = set(state["south"][0])
 
     '''return not((go_and_fo in north_side) and (only_as in north_side)
                 or (gr_and_go in south_side) and (gr_and_go in south_side)
                 or ())'''
+    return not((north_side - go_and_fo == set({})) and not(north_side - go_and_fo == only_as)
+            or (north_side - gr_and_go == set({})) and not(north_side - gr_and_go == only_as)
+            or (south_side - go_and_fo == set({})) and not(south_side - go_and_fo == only_as)
+            or (south_side - gr_and_go == set({})) and not(south_side - gr_and_go == only_as))
 
 def is_goal(state):
     return state[0] == {}
